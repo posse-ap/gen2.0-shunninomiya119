@@ -1,0 +1,17 @@
+h3 {
+    text-decoration-line: underline;
+    text-decoration-color: yellow;
+    text-decoration-thickness: 5px;
+}
+
+body {
+    margin: 10%;
+}
+
+button {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    background-color: grey;
+    font-weight: bold;
+}
