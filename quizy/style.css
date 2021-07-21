@@ -1,12 +1,13 @@
+/* h3タグの大きさを画像の端に合うように調整する */
 .size{
     width: 	550px;
 }
 
-.border{
+.question_underline{
     display: inline-block;
     position: relative;
   }
-.border:before {
+.question_underline:before {
     content: '';
     position: absolute;
     left: 50%;
@@ -17,12 +18,13 @@
     -moz-transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
-    transform: translate(-210%); /*位置調整*/
+    transform: translate(-210%); /*下線の位置調整*/
     background-color: #00ab36; /*下線の色*/
 }
 
-.container-wrapper{
-    margin: 0 auto;
+.container_wrapper{
+    /* divタグを使って一つのブロック要素としたものに対して余白を自動調節 */
+    margin: 0 auto; 
     width: 45%;
 }
 
@@ -41,11 +43,11 @@ button {
     pointer-events: none;
 }
 
-.font-color{
+.font_color{
     color: white;
 }
 
-.result-area{
+.result_area{
     height: 80px;
     border-style: ridge;
     padding: 17px;
@@ -53,11 +55,10 @@ button {
     background-color: #f5f5f5;
 }
 
-.underline{
+.answer_underline{
     text-decoration-line: underline;
     text-decoration-color: blue;
     text-decoration-thickness: 5px;
-    /* 邪魔なマージンを消す */
-    margin: 0; 
+    margin: 0;  /* 勝手についてくる邪魔なマージンを消す */
     
 }
