@@ -2,13 +2,13 @@
 
 let choices = [
     ['たかなわ', 'たかわ', 'こうわ'],
-    ['かめと', 'かめど', 'かめいど'],
+    ['かめいど', 'かめど', 'かめと'],
     ['おかちまち', 'こうじまち', 'かゆまち'],
     ['おなりもん', 'ごせいもん', 'おかどもん'],
-    ['たたりき', 'たたら', 'とどろき'],
-    ['せきこうい', 'いじい', 'しゃくじい'],
+    ['とどろき', 'たたら', 'たたりき'],
+    ['しゃくじい', 'いじい', 'せきこうい'],
     ['ぞうしき', 'ざっしき', 'ざっしょく'],
-    ['みとちょう', 'ごしろちょう', 'おかちまち'],
+    ['おかちまち', 'ごしろちょう', 'みとちょう'],
     ['ししぼね', 'ろっこつ', 'しこね'],
     ['こぐれ', 'こばく', 'こしゃく'],
     
@@ -33,31 +33,36 @@ for (let i = 0; i < choices.length; i++) {
     let display_area = '';
     display_area +='<div id="display_area" class = "container_wrapper">'
     +'<h3 class = "size question_underline">1.この地名はなんて読む？</h3>'
-    +`<img src="${images[i]}">`;
-    for (let k = 0; k < choices[i].length; k++) {
-    display_area +=`<p> <button id="choices_button">${choices[i][k]}</button></p>`
-    };
-    display_area +='<div id="result_area"></div>'
+    +`<img src="${images[i]}">`
+    // idを固定しない方法を探す
+    +`<p> <button id="choices_button0" onclick = "my_func(${[i]},0,0)">${choices[i][0]}</button> </p>`
+    +`<p> <button id="choices_button1" onclick = "my_func(${[i]},1,0)">${choices[i][1]}</button> </p>`
+    +`<p> <button id="choices_button2" onclick = "my_func(${[i]},2,0)">${choices[i][2]}</button> </p>`
+    +'<div id="result_area"></div>'
     +'</div>';
 
     document.write(display_area);
-    console.log(display_area);
 
 };
 
-const choices_button = document.getElementById('choices_button');
+const choices_button0 = document.getElementById('choices_button0');
+const choices_button1 = document.getElementById('choices_button1');
+const choices_button2 = document.getElementById('choices_button2');
 const result_divided = document.getElementById('result_area');
 
-choices_button.addEventListener('click', my_func);
-
-function my_func() {
-    if (choices[0][0] || [1][2] || [2][0] || [3][0] || [4][2] || [5][2] || [6][0] || [7][2] || [8][0] [9][0]) {
+// my_funcの引数は仮引数。実引数の意味がわかるような名前をつける
+function my_func(question_number,choices_number,correct_answer_number) {
+    if (choices_number === correct_answer_number) {
+       choices_button0.classList.add('click_invalidation');
+       choices_button1.classList.add('click_invalidation');
+       choices_button2.classList.add('click_invalidation');
+        
         // ボタンの背景色と文字の色を変える
-       choices_button.style.background='#287dff';
-       choices_button.classList.toggle('font_color');
+       choices_button0.style.background='#287dff';
+       choices_button0.classList.add('font_color');
    
-       // 結果を表示するエリアを作る
-       result_divided.classList.add('result_area');
+       // 結果を表示するボックスを作る
+       result_divided.classList.add('result_box');
    
        // エリア内に文章を表示する
        const header = document.createElement('h4');
@@ -66,16 +71,22 @@ function my_func() {
        header.classList.add('answer_underline'); // 正解！に下線をつける
    
        const paragraph = document.createElement('p');
-       paragraph.innerText = '正解は「' + choices_button.innerText + '」です！';
+       paragraph.innerText = `正解は「${choices_button0.innerText}」です！`;
        result_divided.appendChild(paragraph);   
-   } else {
-       choices_button.style.background= '#ff5128';
-       choices_button.classList.add('font_color');
-       // 正解のボタンも色が変わるようにする
-       choices_button.style.background='#287dff';
-       choices_button.classList.toggle('font_color');
-   
-       result_divided.classList.add('result_area');
+
+    } else if (choices_number === 1) {
+       choices_button0.classList.add('click_invalidation');
+       choices_button1.classList.add('click_invalidation');
+       choices_button2.classList.add('click_invalidation');
+       
+       choices_button1.style.background= '#ff5128';
+       choices_button1.classList.add('font_color');
+    　　// 正解のボタンも色を変える
+       choices_button0.style.background='#287dff';
+       choices_button0.classList.add('font_color');
+
+       
+       result_divided.classList.add('result_box');
    
        const header = document.createElement('h4');
        header.innerText = '不正解！';
@@ -83,8 +94,37 @@ function my_func() {
        header.classList.add('answer_underline');
    
        const paragraph = document.createElement('p');
-       paragraph.innerText = '正解は「' + choices_button.innerText + '」です！';
-       result_divided.appendChild(paragraph);    
-   };
+       paragraph.innerText = `正解は「${choices_button0.innerText}」です！`;
+       result_divided.appendChild(paragraph);  
+
+    } else {
+        choices_button0.classList.add('click_invalidation');
+        choices_button1.classList.add('click_invalidation');
+        choices_button2.classList.add('click_invalidation');
+
+        choices_button2.style.background= '#ff5128';
+        choices_button2.classList.add('font_color');
+        // 正解のボタンも色を変える
+        choices_button0.style.background='#287dff';
+        choices_button0.classList.add('font_color');
+
+        
+        result_divided.classList.add('result_box');
+    
+        const header = document.createElement('h4');
+        header.innerText = '不正解！';
+        result_divided.appendChild(header);
+        header.classList.add('answer_underline');
+    
+        const paragraph = document.createElement('p');
+        paragraph.innerText = `正解は「${choices_button0.innerText}」です！`;
+        result_divided.appendChild(paragraph); 
+        
+    };
 };
+
+
+
+
+
 

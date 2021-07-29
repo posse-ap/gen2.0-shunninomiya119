@@ -26,6 +26,8 @@
     /* divタグを使って一つのブロック要素としたものに対して余白を自動調節 */
     margin: 0 auto; 
     width: 45%;
+    
+
 }
 
 button {
@@ -47,7 +49,7 @@ button {
     color: white;
 }
 
-.result_area{
+.result_box{
     height: 80px;
     border-style: ridge;
     padding: 17px;
@@ -58,7 +60,7 @@ button {
 .answer_underline{
     text-decoration-line: underline;
     text-decoration-color: blue;
-    text-decoration-thickness: 5px;
+    text-decoration-thickness: 3px;
     margin: 0;  /* 勝手についてくる邪魔なマージンを消す */
     
 }
