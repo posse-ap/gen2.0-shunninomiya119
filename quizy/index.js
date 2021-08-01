@@ -11,7 +11,6 @@ let choices = [
     ['おかちまち', 'ごしろちょう', 'みとちょう'],
     ['ししぼね', 'ろっこつ', 'しこね'],
     ['こぐれ', 'こばく', 'こしゃく'],
-    
 ];
 
 let images = [
@@ -25,101 +24,101 @@ let images = [
     'https://d1khcm40x1j0f.cloudfront.net/quiz/50a753d151d35f8602d2c3e2790ea6e4.png',
     'https://d1khcm40x1j0f.cloudfront.net/words/8cad76c39c43e2b651041c6d812ea26e.png',
     'https://d1khcm40x1j0f.cloudfront.net/words/34508ddb0789ee73471b9f17977e7c9c.png',
-
 ];
 
 for (let i = 0; i < choices.length; i++) {
     
-    let display_area = '';
-    display_area +='<div id="display_area" class = "container_wrapper">'
-    +'<h3 class = "size question_underline">1.この地名はなんて読む？</h3>'
-    +`<img src="${images[i]}">`
-    // idを固定しない方法を探す
-    +`<p> <button id="choices_button0" onclick = "my_func(${[i]},0,0)">${choices[i][0]}</button> </p>`
-    +`<p> <button id="choices_button1" onclick = "my_func(${[i]},1,0)">${choices[i][1]}</button> </p>`
-    +`<p> <button id="choices_button2" onclick = "my_func(${[i]},2,0)">${choices[i][2]}</button> </p>`
-    +'<div id="result_area"></div>'
+    let display_area = '';  // for分の中で「display_areaを空の文字列とおく」という処理をしなければ、document.writeした時にdisplay_areaが上書きされて表示内容が１→３→６→１０という具合に増えていってしまう
+    display_area +='<div id="display_area" class="container_wrapper">'
+    +`<h1 class="size question_underline">${i+1}. この地名はなんて読む？</h1>`
+    +`<img src="${images[i]}" class="image">`
+    // idは固有なもののため、問題番号ごとの選択肢ボタンと解答ボックスのidを取得できるように、idに問題番号を表す変数iをつける
+    +`<p> <button id="option_button${i}_0" onclick = "my_func(${[i]},0,0)">${choices[i][0]}</button> </p>`
+    +`<p> <button id="option_button${i}_1" onclick = "my_func(${[i]},1,0)">${choices[i][1]}</button> </p>`
+    +`<p> <button id="option_button${i}_2" onclick = "my_func(${[i]},2,0)">${choices[i][2]}</button> </p>`
+    +`<div id="answer_box${i}"></div>`
     +'</div>';
 
     document.write(display_area);
 
 };
 
-const choices_button0 = document.getElementById('choices_button0');
-const choices_button1 = document.getElementById('choices_button1');
-const choices_button2 = document.getElementById('choices_button2');
-const result_divided = document.getElementById('result_area');
+// my_funcを定義する時の引数は仮引数。実引数の意味がわかるような名前をつける
+function my_func(question_number, option_number, correct_answer_number) {
 
-// my_funcの引数は仮引数。実引数の意味がわかるような名前をつける
-function my_func(question_number,choices_number,correct_answer_number) {
-    if (choices_number === correct_answer_number) {
-       choices_button0.classList.add('click_invalidation');
-       choices_button1.classList.add('click_invalidation');
-       choices_button2.classList.add('click_invalidation');
-        
-        // ボタンの背景色と文字の色を変える
-       choices_button0.style.background='#287dff';
-       choices_button0.classList.add('font_color');
-   
-       // 結果を表示するボックスを作る
-       result_divided.classList.add('result_box');
-   
-       // エリア内に文章を表示する
-       const header = document.createElement('h4');
-       header.innerText = '正解！';
-       result_divided.appendChild(header);
-       header.classList.add('answer_underline'); // 正解！に下線をつける
-   
-       const paragraph = document.createElement('p');
-       paragraph.innerText = `正解は「${choices_button0.innerText}」です！`;
-       result_divided.appendChild(paragraph);   
+    // 変数iは上のfor文の中でしか参照できないため、代わりとして仮引数としてiを参照しているquestion_numberを使う
+    // 関数内で以下の変数を定義しなければquestion_numberを参照できない
+    let option_button0 = document.getElementById(`option_button${question_number}_0`);
+    let option_button1 = document.getElementById(`option_button${question_number}_1`);
+    let option_button2 = document.getElementById(`option_button${question_number}_2`);
+    let answer_box = document.getElementById(`answer_box${question_number}`);
 
-    } else if (choices_number === 1) {
-       choices_button0.classList.add('click_invalidation');
-       choices_button1.classList.add('click_invalidation');
-       choices_button2.classList.add('click_invalidation');
-       
-       choices_button1.style.background= '#ff5128';
-       choices_button1.classList.add('font_color');
-    　　// 正解のボタンも色を変える
-       choices_button0.style.background='#287dff';
-       choices_button0.classList.add('font_color');
+    if (option_number === correct_answer_number) {
+        // 全てのボタンを二度目は押せないようにする
+        option_button0.classList.add('click_invalidation');
+        option_button1.classList.add('click_invalidation');
+        option_button2.classList.add('click_invalidation');
+        // 正解の選択肢ボタンの背景色と文字の色を変える
+        option_button0.style.background = '#287dff';
+        option_button0.classList.add('font_color');
+        // 解答を表示するボックスを作る
+        answer_box.classList.add('answer_box');
+        // 解答ボックス内に文章を表示する
+        const paragraph1 = document.createElement('p');
+        paragraph1.innerText = '正解！';
+        answer_box.appendChild(paragraph1);
+        paragraph1.classList.add('answer_underline'); // 正解！に下線をつける
 
-       
-       result_divided.classList.add('result_box');
-   
-       const header = document.createElement('h4');
-       header.innerText = '不正解！';
-       result_divided.appendChild(header);
-       header.classList.add('answer_underline');
-   
-       const paragraph = document.createElement('p');
-       paragraph.innerText = `正解は「${choices_button0.innerText}」です！`;
-       result_divided.appendChild(paragraph);  
+        const paragraph2 = document.createElement('p');
+        paragraph2.innerText = `正解は「${option_button0.innerText}」です！`;
+        answer_box.appendChild(paragraph2);
+
+    } else if (option_number === 1) {
+        // 全てのボタンを二度目は押せないようにする
+        option_button0.classList.add('click_invalidation');
+        option_button1.classList.add('click_invalidation');
+        option_button2.classList.add('click_invalidation');
+        //  押したボタンの色を間違えた時の色に変える
+        option_button1.style.background = '#ff5128';
+        option_button1.classList.add('font_color');
+        // 正解の選択肢ボタンの色も変えてわかりやすくする
+        option_button0.style.background = '#287dff';
+        option_button0.classList.add('font_color');
+        // 解答を表示するボックスを見えるようにする
+        answer_box.classList.add('answer_box');
+        // 解答ボックス内に文章を表示する
+        const paragraph1 = document.createElement('p');
+        paragraph1.innerText = '不正解！';
+        answer_box.appendChild(paragraph1);
+        paragraph1.classList.add('answer_underline');
+
+        const paragraph2 = document.createElement('p');
+        paragraph2.innerText = `正解は「${option_button0.innerText}」です！`;
+        answer_box.appendChild(paragraph2);
 
     } else {
-        choices_button0.classList.add('click_invalidation');
-        choices_button1.classList.add('click_invalidation');
-        choices_button2.classList.add('click_invalidation');
+        // 全てのボタンを二度目は押せないようにする
+        option_button0.classList.add('click_invalidation');
+        option_button1.classList.add('click_invalidation');
+        option_button2.classList.add('click_invalidation');
+        //  押したボタンの色を間違えた時の色に変える
+        option_button2.style.background = '#ff5128';
+        option_button2.classList.add('font_color');
+        // 正解の選択肢ボタンの色も変えてわかりやすくする
+        option_button0.style.background = '#287dff';
+        option_button0.classList.add('font_color');
+        // 解答を表示するボックスを作る
+        answer_box.classList.add('answer_box');
+        // 解答ボックス内に文章を表示する
+        const paragraph1 = document.createElement('p');
+        paragraph1.innerText = '不正解！';
+        answer_box.appendChild(paragraph1);
+        paragraph1.classList.add('answer_underline');
 
-        choices_button2.style.background= '#ff5128';
-        choices_button2.classList.add('font_color');
-        // 正解のボタンも色を変える
-        choices_button0.style.background='#287dff';
-        choices_button0.classList.add('font_color');
+        const paragraph2 = document.createElement('p');
+        paragraph2.innerText = `正解は「${option_button0.innerText}」です！`;
+        answer_box.appendChild(paragraph2);
 
-        
-        result_divided.classList.add('result_box');
-    
-        const header = document.createElement('h4');
-        header.innerText = '不正解！';
-        result_divided.appendChild(header);
-        header.classList.add('answer_underline');
-    
-        const paragraph = document.createElement('p');
-        paragraph.innerText = `正解は「${choices_button0.innerText}」です！`;
-        result_divided.appendChild(paragraph); 
-        
     };
 };
 
