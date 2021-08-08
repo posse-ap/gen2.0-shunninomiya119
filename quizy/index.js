@@ -13,6 +13,30 @@ let choices = [
     ['こぐれ', 'こばく', 'こしゃく'],
 ];
 
+// 配列ランダムソート（シャッフル）関数
+// 関数の定義はfor分の中ではなくグローバルでする！→グローバルで定義しておけばいつでも呼び出せるから
+function shuffleArray(arr) {
+    let n = arr.length;
+    let temp = 0, i = 0;
+
+    while (n) {
+        i = Math.floor(Math.random() * n--);  // 0以上2未満のランダムな整数を取得
+        temp = arr[n];
+        arr[n] = arr[i];
+        arr[i] = temp;
+    }
+    return arr;
+};
+
+for (let i = 0; i < choices.length; i++) {
+    shuffleArray(choices[i]);
+};
+
+let after_shuffle_choices = choices
+console.log(after_shuffle_choices);
+const correct_answer = after_shuffle_choices[0].find(element => element === 'たかなわ');
+console.log(correct_answer);
+
 let images = [
     'https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png',
     'https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fefedf731.png',
@@ -121,6 +145,7 @@ function my_func(question_number, option_number, correct_answer_number) {
 
     };
 };
+
 
 
 
