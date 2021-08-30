@@ -41,15 +41,18 @@ let images = [
     'https://d1khcm40x1j0f.cloudfront.net/words/34508ddb0789ee73471b9f17977e7c9c.png',
 ];
 
-for (let i = 0; i < choices.length; i++) {
-    let correct_answer = choices[i][0];
-   
-    shuffleArray(choices[i]);
+// display_areaを空の文字列と置く
+let display_area = '';
 
+for (let i = 0; i < choices.length; i++) {
+    // シャッフルする前の配列から正解を取ってくる
+    let correct_answer = choices[i][0];
+    // i番目の配列をシャッフル
+    shuffleArray(choices[i]);
+    // シャッフルした配列の中から、シャッフル前の配列から取ってきた正解のインデックスを見つける
     let correct_answer_index = choices[i].findIndex(element => element === correct_answer);
-    
-    let display_area = '';  // for分の中で「display_areaを空の文字列とおく」という処理をしなければ、document.writeした時にdisplay_areaが上書きされて表示内容が１→３→６→１０という具合に増えていってしまう
-    display_area +='<div id="display_area" class="container_wrapper">'
+
+    display_area +='<div class="content_wrapper">'
     +`<h1 class="size question_underline">${i+1}. この地名はなんて読む？</h1>`
     +`<img src="${images[i]}" class="image">`
     // idは固有なもののため、問題番号ごとの選択肢ボタンと解答ボックスのidを取得できるように、idに問題番号を表す変数iをつける
@@ -58,10 +61,10 @@ for (let i = 0; i < choices.length; i++) {
     +`<p> <button class="button${i}" id="option_button${i}_2" onclick = "my_func(${[i]},2,${correct_answer_index})">${choices[i][2]}</button> </p>`
     +`<div id="answer_box${i}"></div>`
     +'</div>';
-
-    document.write(display_area);
-
 };
+
+// headerの直後にdisplay_areaを挿入する
+document.getElementById('header').insertAdjacentHTML('afterend', display_area);
 
 // my_funcを定義する時の引数は仮引数。実引数の意味がわかるような名前をつける
 function my_func(question_number, option_number, correct_answer_number) {
@@ -120,7 +123,7 @@ function my_func(question_number, option_number, correct_answer_number) {
         const paragraph1 = document.createElement('p');
         paragraph1.innerText = '不正解！';
         answer_box.appendChild(paragraph1);
-        paragraph1.classList.add('answer_underline');
+        paragraph1.classList.add('false_underline');
         const paragraph2 = document.createElement('p');
         paragraph2.innerText = `正解は「${correct_button.innerText}」です！`;
         answer_box.appendChild(paragraph2);
@@ -146,7 +149,7 @@ function my_func(question_number, option_number, correct_answer_number) {
         const paragraph1 = document.createElement('p');
         paragraph1.innerText = '不正解！';
         answer_box.appendChild(paragraph1);
-        paragraph1.classList.add('answer_underline');
+        paragraph1.classList.add('false_underline');
         const paragraph2 = document.createElement('p');
         paragraph2.innerText = `正解は「${correct_button.innerText}」です！`;
         answer_box.appendChild(paragraph2);
@@ -172,7 +175,7 @@ function my_func(question_number, option_number, correct_answer_number) {
         const paragraph1 = document.createElement('p');
         paragraph1.innerText = '不正解！';
         answer_box.appendChild(paragraph1);
-        paragraph1.classList.add('answer_underline');
+        paragraph1.classList.add('false_underline');
         const paragraph2 = document.createElement('p');
         paragraph2.innerText = `正解は「${correct_button.innerText}」です！`;
         answer_box.appendChild(paragraph2);
