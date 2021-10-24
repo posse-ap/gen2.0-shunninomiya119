@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webapp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="header_content">
+            <div class="header_left">
+                <h1><img src="./imgs/posseLogo.png" alt=""></h1>
+                <p class="week">4th week</p>
+            </div>
+            <div class="header_right">
+                <button id="record_post_button" class="record_post_button">記録・投稿</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="main" class="main">
+        <!-- modal -->
+        <div id="modal" class="modal">
+            <form action="" id="modal_form">
+                    <div class="form_left">
+                        <section class="learning_day">
+                            学習日<br>
+                            <input type="text">
+                        </section>
+                        <section class="modal_learning_content">
+                            学習コンテンツ（複数選択可）<br>
+                            <ul>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="content1" class="checkbox">
+                                        <label for="content1">N予備校</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="content2" class="checkbox">
+                                        <label for="content2">ドットインストール</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="content3" class="checkbox">
+                                        <label for="content3">POSSE課題</label>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="modal_learning_language">
+                            学習言語（複数選択可）<br>
+                            <ul>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="language1" class="checkbox">
+                                        <label for="language1">HTML</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="language2" class="checkbox">
+                                        <label for="language2">CSS</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="language3" class="checkbox">
+                                        <label for="language3">JavaScript</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="language4" class="checkbox">
+                                        <label for="language4">PHP</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="language5" class="checkbox">
+                                        <label for="language5">Laravel</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="language6" class="checkbox">
+                                        <label for="language6">SQL</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="language7" class="checkbox">
+                                        <label for="language7">SHELL</label>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button>
+                                        <input type="checkbox" id="language8" class="checkbox">
+                                        <label for="language8">情報システム基礎知識（その他）</label>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="form_right">
+                        <section class="learning_time">
+                            学習時間<br>
+                            <input type="text">
+                        </section>
+                        <section class="twitter"> 
+                            Twitter用コメント<br>
+                            <textarea name="" id="twitter_comment" cols="30" rows="10"></textarea>
+                            <input type="checkbox" id="twitter_checkbox">
+                            <label for="twitter_check">Twitterにシェアする</label>
+                        </section>
+                    </div>
+            </form>
+            <footer>
+                <div class="modal_footer">
+                <button id="modal_record_post_button" class="record_post_button modal_record_post_button">記録・投稿</button>
+            </div>
+            </footer>
+        </div>
+
+<!-- ここからmain -->
+        <div class="main_left">
+            <section class="study_time">
+                <ul class="study_time_panels">
+                    <li>
+                        <div class="time_panel">
+                            <time class="period">Today</time>
+                            <h2 class="hours">3</h2>
+                            <p>hour</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="time_panel">
+                            <time class="period">Month</time>
+                            <h2 class="hours">120</h2>
+                            <p>hour</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="time_panel">
+                            <time class="period">Total</time>
+                            <h2 class="hours">1348</h2>
+                            <p>hour</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="bar_graph">
+    
+            </section>
+        </div>
+        <div class="main_right">
+            <section class="learning_language">
+                <h2 class="learning_title">学習言語</h2>
+                <img class="pie_chart" src="./imgs/graph1.png" alt="">
+                <dl class="language_list">
+                    <div class="language_div">
+                        <dt class="circle"></dt>
+                        <dd class="language">JavaScript</dd>
+                    </div>
+                    <div class="language_div">
+                        <dt class="circle"></dt>
+                        <dd class="language">CSS</dd>
+                    </div>
+                    <div class="language_div">
+                        <dt class="circle"></dt>
+                        <dd class="language">PHP</dd>
+                    </div>
+                    <div class="language_div">
+                        <dt class="circle"></dt>
+                        <dd class="language">HTML</dd>
+                    </div>
+                    <div class="language_div">
+                        <dt class="circle"></dt>
+                        <dd class="language">Laravel</dd>
+                    </div>
+                    <div class="language_div">
+                        <dt class="circle"></dt>
+                        <dd class="language">SQL</dd>
+                    </div>
+                    <div class="language_div">
+                        <dt class="circle"></dt>
+                        <dd class="language">SHELL</dd>
+                    </div>
+                    <div class="language_div">
+                        <dt class="circle"></dt>
+                        <dd class="language">情報システム基礎知識（その他）</dd>
+                    </div>
+                </dl>
+            </section>
+            <section class="learning_content">
+                <h2 class="learning_title">学習コンテンツ</h2>
+                <img class="pie_chart" src="./imgs/graph2.png" alt="">
+                <dl class="content_list">
+                    <div class="content_div">
+                        <dt class="circle"></dt>
+                        <dd class="content">ドットインストール</dd>
+                    </div>
+                    <div class="content_div">
+                        <dt class="circle"></dt>
+                        <dd class="content">N予備校</dd>
+                    </div>
+                    <div class="content_div">
+                        <dt class="circle"></dt>
+                        <dd class="content">POSSE課題</dd>
+                    </div>
+                </dl>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <a href=""><img class="footer_angle_left" src="./imgs/angle-left-solid.svg" alt=""></a>
+            <time class="time">2020年10月</time>
+            <a href=""><img class="footer_angle_right" src="./imgs/angle-right-solid.svg" alt=""></a>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
