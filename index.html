@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webapp</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script> <!-- 棒グラフのchart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script> <!-- ドーナツグラフのchart.js -->
 </head>
 <body>
     <header id="header">
@@ -23,6 +25,9 @@
     <div id="main" class="main">
         <!-- modal -->
         <div id="modal" class="modal">
+            <header>
+                <span id="modal_close_button" class="modal_close"></span>
+            </header>
             <form action="" id="modal_form">
                     <div class="form_left">
                         <section class="learning_day">
@@ -154,13 +159,13 @@
                 </ul>
             </section>
             <section class="bar_graph">
-    
+                <canvas id="myBarChart"></canvas>
             </section>
         </div>
         <div class="main_right">
             <section class="learning_language">
                 <h2 class="learning_title">学習言語</h2>
-                <img class="pie_chart" src="./imgs/graph1.png" alt="">
+                <canvas id="myPieChart1"></canvas>
                 <dl class="language_list">
                     <div class="language_div">
                         <dt class="circle"></dt>
@@ -198,7 +203,7 @@
             </section>
             <section class="learning_content">
                 <h2 class="learning_title">学習コンテンツ</h2>
-                <img class="pie_chart" src="./imgs/graph2.png" alt="">
+                <canvas id="myPieChart2"></canvas>
                 <dl class="content_list">
                     <div class="content_div">
                         <dt class="circle"></dt>
