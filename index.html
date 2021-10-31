@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script> <!-- 棒グラフのchart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script> <!-- ドーナツグラフのchart.js -->
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js "></script> <!-- パーセンテージを表示するplugin-->
 </head>
 <body>
     <header id="header">
@@ -159,62 +160,62 @@
                 </ul>
             </section>
             <section class="bar_graph">
-                <canvas id="myBarChart"></canvas>
+                <canvas id="BarChart"></canvas>
             </section>
         </div>
         <div class="main_right">
             <section class="learning_language">
                 <h2 class="learning_title">学習言語</h2>
-                <canvas id="myPieChart1"></canvas>
+                <canvas id="donutChart1" width="400" height="300"></canvas>
                 <dl class="language_list">
                     <div class="language_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle1"></dt>
                         <dd class="language">JavaScript</dd>
                     </div>
                     <div class="language_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle2"></dt>
                         <dd class="language">CSS</dd>
                     </div>
                     <div class="language_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle3"></dt>
                         <dd class="language">PHP</dd>
                     </div>
                     <div class="language_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle4"></dt>
                         <dd class="language">HTML</dd>
                     </div>
                     <div class="language_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle5"></dt>
                         <dd class="language">Laravel</dd>
                     </div>
                     <div class="language_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle6"></dt>
                         <dd class="language">SQL</dd>
                     </div>
                     <div class="language_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle7"></dt>
                         <dd class="language">SHELL</dd>
                     </div>
                     <div class="language_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle8"></dt>
                         <dd class="language">情報システム基礎知識（その他）</dd>
                     </div>
                 </dl>
             </section>
             <section class="learning_content">
                 <h2 class="learning_title">学習コンテンツ</h2>
-                <canvas id="myPieChart2"></canvas>
+                <canvas id="donutChart2" width="400" height="300"></canvas>
                 <dl class="content_list">
                     <div class="content_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle1"></dt>
                         <dd class="content">ドットインストール</dd>
                     </div>
                     <div class="content_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle2"></dt>
                         <dd class="content">N予備校</dd>
                     </div>
                     <div class="content_div">
-                        <dt class="circle"></dt>
+                        <dt class="circle circle3"></dt>
                         <dd class="content">POSSE課題</dd>
                     </div>
                 </dl>
@@ -230,5 +231,7 @@
         </div>
     </footer>
     <script src="index.js"></script>
+    <script src="bar_chart.js"></script>
+    <script src="donut_chart.js"></script>
 </body>
 </html>

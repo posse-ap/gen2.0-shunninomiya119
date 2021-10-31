@@ -175,11 +175,11 @@ header{
     border-bottom: 3px solid;
     border-left: 3px solid;
     border-color:  #585753; 
-    opacity: 0;
+    /* opacity: 0; */
 }
-.checkbox input:checked +label::after{
+/* .checkbox input:checked +label::after{
     opacity: 1;
-}
+} */
 
 .modal_learning_language{
     width: 100%;
@@ -337,7 +337,7 @@ header{
     background-color: #fff;
     position: relative;
 }
-#myBarChart{
+#BarChart{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -392,8 +392,32 @@ header{
 .circle{
     width: 15px;
     height: 15px;
-    border: solid 1px;
+    border: none;
     border-radius: 50%;
+}
+.circle1{
+    background-color: #3C00FF;
+}
+.circle2{
+    background-color: #4682b4;
+}
+.circle3{
+    background-color: #6495ed;
+}
+.circle4{
+    background-color: #00bfff;
+}
+.circle5{
+    background-color: #7b68ee;
+}
+.circle6{
+    background-color: #4b0082;
+}
+.circle7{
+    background-color: #6a5acd;
+}
+.circle8{
+    background-color: #000080;
 }
 .language{
     margin-left: 10px;
