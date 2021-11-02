@@ -22,18 +22,3 @@ function close_modal() {
 
 modal_close_button.addEventListener('click', close_modal);
 
-
-
-
-
-let checkbox_array = document.querySelectorAll('.checkbox');
-
-checkbox_array.forEach(checkbox => {
-    checkbox.addEventListener('change', checked);
-});
-
-console.log(checkbox_array)
-function checked(e) {
-   e.target = checked_box;
-   checked_box.style.backgroundColor = 'blue';
-}

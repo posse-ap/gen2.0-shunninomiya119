@@ -18,11 +18,7 @@ var BarChart = new Chart(ctx, {
             display: false,
         },
         responsive: true,
-        plugins: {
-            labels: {
-              
-            }
-          },
+
         scales: {
             xAxes: [{
                 gridLines: {
