@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webapp</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3ef054aae2.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script> <!-- 棒グラフのchart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script> <!-- ドーナツグラフのchart.js -->
     <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js "></script> <!-- パーセンテージを表示するplugin-->
+     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"/>
+     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
 </head>
 <body>
+    <div id="modal_background" class="modal_background"></div>
+
     <header id="header">
         <div class="header_content">
             <div class="header_left">
@@ -24,8 +29,8 @@
         </div>
     </header>
 
-    <!-- modal -->
-    <div class="modal_background">
+    <div id="main" class="main">
+        <!-- こっからmodal -->
         <div id="modal" class="modal">
             <header>
                 <span id="modal_close_button" class="modal_close"></span>
@@ -110,10 +115,7 @@
                 </div>
             </footer>
         </div>
-    </div>
-
-    <!-- こっからメイン -->
-    <div id="main" class="main">
+        <!-- ここまでmodal -->
         <div class="main_left">
             <section class="study_time">
                 <ul class="study_time_panels">
@@ -206,13 +208,15 @@
 
     <footer>
         <div class="footer">
-            <a href=""><img class="footer_angle_left" src="./imgs/angle-left-solid.svg" alt=""></a>
+            <a href=""><i class="fas fa-chevron-left" style="color: #0f71bc;"></i></a>
             <time class="time">2020年10月</time>
-            <a href=""><img class="footer_angle_right" src="./imgs/angle-right-solid.svg" alt=""></a>
+            <a href=""><i class="fas fa-chevron-right" style="color: #97b9d1;"></i></a>
         </div>
+        <button id="footer_record_post_button" class="record_post_button" >記録・投稿</button>
     </footer>
     <script src="index.js"></script>
     <script src="bar_chart.js"></script>
     <script src="donut_chart.js"></script>
+    <script src="calendar.js"></script>
 </body>
 </html>
