@@ -116,6 +116,28 @@
             </footer>
         </div>
         <!-- ここまでmodal -->
+        <!-- ローディング画面 -->
+<div id="loading">
+    <header>
+        <span id="modal_close_button" class="modal_close"></span>
+    </header>
+    <div class="loader"></div>
+  </div>
+  <!-- ローディング画面 -->
+<!-- コンテンツ部分 -->
+<div class="done_modal">
+    <header>
+        <span id="modal_close_button" class="modal_close"></span>
+    </header>
+    <div class="done_content">
+        <p class="passage_awesome">AWESOME!</p>
+        <input type="checkbox" id="awesome" class="awesome_checkbox">
+        <label for="awesome" class="awesome_label"></label>
+        <p class="done_message">記録・投稿<br>完了しました</p>
+    </div>
+</div>
+<!-- コンテンツ部分 -->
+
         <div class="main_left">
             <section class="study_time">
                 <ul class="study_time_panels">
@@ -218,5 +240,6 @@
     <script src="bar_chart.js"></script>
     <script src="donut_chart.js"></script>
     <script src="calendar.js"></script>
+    <script src="loading.js"></script>
 </body>
 </html>
