@@ -9,10 +9,14 @@
     <script src="https://kit.fontawesome.com/3ef054aae2.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script> <!-- 棒グラフのchart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script> <!-- ドーナツグラフのchart.js -->
-    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js "></script> <!-- パーセンテージを表示するplugin-->
-     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"/>
-     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> -->
+     <!-- パーセンテージを表示するplugin-->
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js "></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 </head>
 <body>
     <div id="modal_background" class="modal_background"></div>
@@ -39,7 +43,7 @@
                 <div class="form_left">
                     <section class="learning_day">
                         学習日<br>
-                        <input type="text">
+                        <input type="text" id="input1">
                     </section>
                     <section class="modal_learning_content">
                         学習コンテンツ（複数選択可）<br>
@@ -119,15 +123,15 @@
         <!-- ローディング画面 -->
 <div id="loading">
     <header>
-        <span id="modal_close_button" class="modal_close"></span>
+        <span id="loading_close_button" class="modal_close"></span>
     </header>
     <div class="loader"></div>
   </div>
   <!-- ローディング画面 -->
-<!-- コンテンツ部分 -->
-<div class="done_modal">
+<!-- 投稿完了画面 -->
+<div id="done_modal" class="done_modal">
     <header>
-        <span id="modal_close_button" class="modal_close"></span>
+        <span id="done_close_button" class="modal_close"></span>
     </header>
     <div class="done_content">
         <p class="passage_awesome">AWESOME!</p>
@@ -136,7 +140,7 @@
         <p class="done_message">記録・投稿<br>完了しました</p>
     </div>
 </div>
-<!-- コンテンツ部分 -->
+<!-- 投稿完了画面 -->
 
         <div class="main_left">
             <section class="study_time">

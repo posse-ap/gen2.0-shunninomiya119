@@ -150,7 +150,7 @@ header{
 }
 .checkbox_container{
     border: none;
-    border-radius: 7px;
+    border-radius: 30px;
     background-color: #f5f5f8;
     font-size: 14px;
     padding: 6px;
@@ -193,9 +193,6 @@ label::after{
     border-bottom: 3px solid;
     border-left: 3px solid;
     border-color:  #fff; 
-}
-input.checkbox:checked ~ .checkbox_container{
-    background-color: #7cbbe7;
 }
 input.checkbox:checked ~ label::before{
     background-color: #0f71bd;
@@ -310,7 +307,10 @@ input.twitter_checkbox:checked ~ .twitter_label::before{
     z-index: 999;
     transition: all 1s;
 
-  }
+}
+#loading header{
+    border-radius: 30px;
+}
 .loader {
     font-size: 10px;
     margin: 0 auto;
@@ -401,6 +401,9 @@ input.twitter_checkbox:checked ~ .twitter_label::before{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);;
     background-color: #fff;
     z-index: 999;
+}
+.done_modal header{
+    border-radius: 30px;
 }
 .done_content{
     padding-top: 60px;

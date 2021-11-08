@@ -4,8 +4,6 @@ const modal = document.getElementById('modal');
 const modal_background = document.getElementById('modal_background');
 const button = document.getElementById('record_post_button');
 const sp_button = document.getElementById('footer_record_post_button');
-const header = document.getElementById('header');
-const main = document.getElementById('main');
 
 
 // モーダル画面の表示
@@ -17,13 +15,57 @@ function display_modal() {
 button.addEventListener('click', display_modal);
 sp_button.addEventListener('click', display_modal);
 
-// モーダル画面の非表示
+
+// loading画面の表示
+const loading_modal = document.getElementById('loading');
+const done_modal = document.getElementById('done_modal');
+const modal_record_post_button = document.getElementById('modal_record_post_button');
+
+function loading() {
+    loading_modal.style.display = 'block';
+    setTimeout(() => {
+        done_modal.style.display = 'block'
+    }, 3000);
+}
+
+modal_record_post_button.addEventListener('click', loading)
+
+
+// 三つのモーダル画面の非表示
 const modal_close_button = document.getElementById('modal_close_button');
+const loading_close_button = document.getElementById('loading_close_button');
+const done_close_button = document.getElementById('done_close_button');
+let close_buttons = [modal_close_button, loading_close_button, done_close_button];
+// 入力フォームの内容
+const formElement = document.getElementById('modal_form');
+let checkbox_containers = document.querySelectorAll('.checkbox_container');
 
 function close_modal() {
     modal.style.display = 'none';
+    loading_modal.style.display = 'none';
+    done_modal.style.display = 'none';
     modal_background.style.display = 'none';
+    // 入力フォームのリセット
+    formElement.reset();
+    // 選択したチェックボックスの色を戻す
+    checkbox_containers.forEach(container => {
+        container.style.background ='#f5f5f8'
+    });
 };
 
-modal_close_button.addEventListener('click', close_modal);
+close_buttons.forEach(close_button => {
+    close_button.addEventListener('click', close_modal);
+});
 
+// チェックボックスがチェックされたら背景色を変える
+let checkboxes = document.querySelectorAll('.checkbox');
+
+function checked(e) {
+    let checked_box = e.target;
+    let checkbox_container = checked_box.parentNode;
+    checkbox_container.style.background = '#3ccfff';
+};
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', checked)
+});
