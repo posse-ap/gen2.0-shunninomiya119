@@ -381,31 +381,15 @@ input.twitter_checkbox:checked ~ .twitter_label::before{
     visibility: hidden;
   }
 
+.loading_content{
+    display: block;
+}
 
 
 /* 投稿完了モーダル */
-.done_modal{
-    display: none;
-    width: 900px;
-    height: 75%;
-    position: absolute;
-    top: 52%;
-    left: 50%;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-    margin:0;
-    padding:0;
-    border: solid 1px #fff;
-    border-radius: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);;
-    background-color: #fff;
-    z-index: 999;
-}
-.done_modal header{
-    border-radius: 30px;
-}
+
 .done_content{
+    display: none;
     padding-top: 60px;
     text-align: center;
     margin-top: 15%;

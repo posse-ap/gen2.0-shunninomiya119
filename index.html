@@ -39,7 +39,7 @@
             <header>
                 <span id="modal_close_button" class="modal_close"></span>
             </header>
-            <form action="" id="modal_form">
+            <form action="" name="modal_form" id="modal_form">
                 <div class="form_left">
                     <section class="learning_day">
                         学習日<br>
@@ -107,8 +107,8 @@
                     </section>
                     <section class="twitter">
                         Twitter用コメント<br>
-                        <textarea name="" id="twitter_comment" cols="30" rows="10"></textarea>
-                        <input type="checkbox" id="twitter_check" class="twitter_checkbox">
+                        <textarea id="twitter_comment" target="sendPhoto" cols="30" rows="10"></textarea>
+                        <input type="checkbox" name="twitter_checkbox" id="twitter_check" class="twitter_checkbox">
                         <label class="twitter_label" for="twitter_check">Twitterにシェアする</label>
                     </section>
                 </div>
@@ -125,22 +125,16 @@
     <header>
         <span id="loading_close_button" class="modal_close"></span>
     </header>
-    <div class="loader"></div>
-  </div>
-  <!-- ローディング画面 -->
-<!-- 投稿完了画面 -->
-<div id="done_modal" class="done_modal">
-    <header>
-        <span id="done_close_button" class="modal_close"></span>
-    </header>
-    <div class="done_content">
+    <div id="loading_content" class="loading_content">
+        <div class="loader"></div>
+    </div>
+    <div id="done_content" class="done_content">
         <p class="passage_awesome">AWESOME!</p>
         <input type="checkbox" id="awesome" class="awesome_checkbox">
         <label for="awesome" class="awesome_label"></label>
         <p class="done_message">記録・投稿<br>完了しました</p>
     </div>
 </div>
-<!-- 投稿完了画面 -->
 
         <div class="main_left">
             <section class="study_time">
@@ -245,5 +239,6 @@
     <script src="donut_chart.js"></script>
     <script src="calendar.js"></script>
     <script src="loading.js"></script>
+    <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
 </body>
 </html>

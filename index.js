@@ -18,13 +18,15 @@ sp_button.addEventListener('click', display_modal);
 
 // loading画面の表示
 const loading_modal = document.getElementById('loading');
-const done_modal = document.getElementById('done_modal');
+const loading_content = document.getElementById('loading_content');
+const done_content = document.getElementById('done_content');
 const modal_record_post_button = document.getElementById('modal_record_post_button');
 
 function loading() {
     loading_modal.style.display = 'block';
     setTimeout(() => {
-        done_modal.style.display = 'block'
+        loading_content.style.display = 'none';
+        done_content.style.display = 'block';
     }, 3000);
 }
 
@@ -34,8 +36,7 @@ modal_record_post_button.addEventListener('click', loading)
 // 三つのモーダル画面の非表示
 const modal_close_button = document.getElementById('modal_close_button');
 const loading_close_button = document.getElementById('loading_close_button');
-const done_close_button = document.getElementById('done_close_button');
-let close_buttons = [modal_close_button, loading_close_button, done_close_button];
+let close_buttons = [modal_close_button, loading_close_button];
 // 入力フォームの内容
 const formElement = document.getElementById('modal_form');
 let checkbox_containers = document.querySelectorAll('.checkbox_container');
@@ -43,7 +44,6 @@ let checkbox_containers = document.querySelectorAll('.checkbox_container');
 function close_modal() {
     modal.style.display = 'none';
     loading_modal.style.display = 'none';
-    done_modal.style.display = 'none';
     modal_background.style.display = 'none';
     // 入力フォームのリセット
     formElement.reset();
@@ -51,6 +51,8 @@ function close_modal() {
     checkbox_containers.forEach(container => {
         container.style.background ='#f5f5f8'
     });
+    loading_content.style.display = 'block';
+    done_content.style.display = 'none';
 };
 
 close_buttons.forEach(close_button => {
@@ -69,3 +71,26 @@ function checked(e) {
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', checked)
 });
+
+
+
+// twitter共有機能
+const twitter_checkbox = document.modal_form.twitter_checkbox // checkboxの取得
+modal_record_post_button.addEventListener('click', function(event) {
+    if (twitter_checkbox.checked) {
+        event.preventDefault();
+    var left = Math.round(window.screen.width / 2 - 275);
+    var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
+    window.open(
+        "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.getElementById("twitter_comment").value),
+        null,
+        "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,left=" + left + ",top=" + top);
+    }
+});
+
+// const $form = $('#twitter_comment')
+// $('.modal_record_post_button').on('click', evt => {
+//   $form.submit()
+//   $form[0].reset()
+//   return false
+// })
