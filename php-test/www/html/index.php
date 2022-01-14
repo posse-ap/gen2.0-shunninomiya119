@@ -1,6 +1,15 @@
-<!-- <?php
-phpinfo();
-?> -->
+<?php
+
+    $connectID = mysql_connect('127.0.0.1', 'root', 'secret');
+    if ($connectID) {
+    echo 'データベースに接続しました';
+    }
+
+    $result = mysql_select_db('quizy', $connectID);
+    if ($result) {
+    echo 'quizyデータベースを選択しました';
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
