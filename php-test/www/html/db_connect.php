@@ -1,8 +1,8 @@
 <?php
 
 // ドライバ呼び出しを使用して MySQL データベースに接続します
-$dsn = 'mysql:dbname=quizy;host=php-test_mysql_1';
-$user = 'root';
+$dsn = 'mysql:dbname=quizy;host=mysql';
+$user = 'shun';
 $password = 'secret';
 
 try {

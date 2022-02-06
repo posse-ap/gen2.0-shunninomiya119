@@ -2,6 +2,23 @@
 
 require "db_connect.php";
 
+$id = filter_input(INPUT_GET, 'id');
+$stmt = $dbh->query("SELECT * FROM big_questions WHERE id ='". $id ."'");
+    $questions = $stmt->fetchAll(); //レコード取って来る
+    // print_r($questions[0]['name']) . PHP_EOL;
+
+// $sql = "SELECT * FROM big_questions WHERE id = $id";
+
+// $questions = $dbh->query($sql);
+// var_dump($questions);
+// foreach ($questions as $question) {
+ 
+//     // データベースのフィールド名で出力
+//     echo $question['name'];
+   
+//     // 改行を入れる
+//     echo '<br>';
+//   }
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +27,7 @@ require "db_connect.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quizy</title>
+    <title>quizy <?= $questions[0]['name']; ?> </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
