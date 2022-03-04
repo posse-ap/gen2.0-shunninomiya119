@@ -65,29 +65,39 @@ $stmt = $dbh->query("SELECT * FROM big_questions WHERE id ='". $id ."'");
         </div>
     </header>
 
-
+    <?php 
+            $sql = "SELECT * FROM questions WHERE big_questions_id =' ". $id ." ' ";
+ 
+            // SQLステートメントを実行し、結果を変数に格納
+            $stmt = $dbh->query($sql);
+            // $questions = $stmt->fetchAll();
+            foreach ($stmt as $i => $row) {
+        ?>
+        
+             
     <div class="content_wrapper">
-        <h1 class="size question_underline">${i+1}. この地名はなんて読む？</h1>
-        <img src="${images[i]}" class="image">
-        <?php 
+        <h1 class="size question_underline"> <?= $i+1 ?>.この地名はなんて読む？</h1>
+       
+        <img src="../images/<?= $row['image']; ?>" class="image">
+        
+            <?php 
             $sql = "SELECT * FROM choices WHERE big_questions_id =' ". $id ." ' ";
  
             // SQLステートメントを実行し、結果を変数に格納
             $stmt = $dbh->query($sql);
-             
+        
             // foreach文で配列の中身を一行ずつ出力
             foreach ($stmt as $row) {
+             ?>
+            
+              <button> <?= $row['name']; ?> </button>
              
-              // データベースのフィールド名で出力
-              echo $row['name'];
-             
-              // 改行を入れる
-              echo '<br>';
-            }
-        ?>
+              
+            <?php } ?>
+        
         <div id="answer_box${i}"></div>
     </div>
-
+    <?php } ?>
 
 
     <script src="index.js"></script>
